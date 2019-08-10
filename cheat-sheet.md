@@ -10,6 +10,13 @@
 | package (default) | internal |
 | private | private |
 
+### Others
+| Java | Kotlin |
+| --- | --- |
+| none-final (default) | var |
+| final | val |
+...
+
 
 ## Types
 | Java | Kotlin | Kotlin Default Initializer |
