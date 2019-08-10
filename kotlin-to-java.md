@@ -12,8 +12,6 @@ Describes some common Kotlin declaration and the resultings compiled Java class 
 ```kotlin
 object A {
 }
-```
-```kotlin
 internal object A {
 }
 ```
@@ -59,37 +57,42 @@ final class A {
 
 
 
+### Class
+<table>
+<tr><td>Kotlin</td><td>Java</td></tr>
+<tr><td>
 
-Kotlin:
-```kotlin
-object A {
-}
-```
-
-Java:
-```java
-public final class A {
-  private A() {
-  }
-  public static final A INSTANCE;
-  static {
-    A a = new A();
-    INSTANCE = a;
-  }
-}
-```
-
-
-Kotlin:
 ```kotlin
 class A {
 }
+internal class A {
+}
 ```
+</td><td>
 
-Java:
 ```java
 public final class A {
   public A() {
   }
 }
 ```
+</td></tr>
+</table>
+
+
+
+Kotlin:
+```kotlin
+private class A {
+}
+```
+
+Java:
+```java
+final class A {
+  public A() {
+  }
+}
+```
+
+Bla bla...
