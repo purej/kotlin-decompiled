@@ -6,15 +6,19 @@ Describes some common Kotlin declaration and the resultings compiled Java class 
 ### Object
 <table>
 <tr><td>Kotlin</td><td>Java</td></tr>
-<tr>
-<td>
+
+<tr><td>
 
 ```kotlin
 object A {
 }
 ```
-</td>
-<td>
+```kotlin
+internal object A {
+}
+```
+
+</td><td>
 
 ```java
 public final class A {
@@ -27,9 +31,33 @@ public final class A {
   }
 }
 ```
-</td>
-</tr>
+</td></tr>
+
+<tr><td>
+
+```kotlin
+private object A {
+}
+```
+</td><td>
+
+```java
+final class A {
+  private A() {
+  }
+  public static final A INSTANCE;
+  static {
+    A a = new A();
+    INSTANCE = a;
+  }
+}
+```
+</td></tr>
+
 </table>
+
+
+
 
 
 Kotlin:
