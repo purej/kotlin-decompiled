@@ -77,22 +77,24 @@ public final class A {
 }
 ```
 </td></tr>
-</table>
+<tr><td>
 
-
-
-Kotlin:
 ```kotlin
 private class A {
 }
 ```
+</td><td>
 
-Java:
 ```java
 final class A {
   public A() {
   }
 }
 ```
+</td></tr>
+
+</table>
+
+
 
 Bla bla...
