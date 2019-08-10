@@ -1,2 +1,2 @@
 # Kotlin Examples
-Contains some Kotlin examples and cheat-sheets.
+Contains Kotlin examples and cheat-sheets.
