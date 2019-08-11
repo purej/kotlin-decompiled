@@ -1,8 +1,8 @@
 # Kotline to Java (Compiles To)
-Describes some common Kotlin declarations and the resultings compiled Java code result. This has been tested with IntelliJ 2019.2, OpenJdk 11 and the JD decompiler.
+Describes some common Kotlin declarations and the resulting compiled Java code result. This has been tested with IntelliJ 2019.2, OpenJdk 11 and the JD decompiler.
 
 ## Kotlin Metadata
-The Kotlin compiler adds a ``@Metadata`` annotation to EVERY class file. This annotation contains alot of additional information, see [Metadata.kt](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/jvm/runtime/kotlin/Metadata.kt). This is the reason, why Kotlin compile class files are about 30% bigger in size then plain Java compile classes.
+The Kotlin compiler adds a ``@Metadata`` annotation to every class file. This annotation contains alot of additional information, see [Metadata.kt](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/jvm/runtime/kotlin/Metadata.kt). This is the reason, why Kotlin compiled class files are about 30% bigger in size then plain Java compiled classes.
 
 Example:
 
@@ -29,10 +29,16 @@ public final class A {}
 </td></tr>
 </table>
 
+In the examples below, the auto-generated @Metadata annotation is not listed anymore to increase readability.
+
+## Kotlin @NotNull
+The Kotlin compiler might also add a ``@NotNull`` annotation to fields or methods which should never contain/return null values. Unfortunately the [JSR-305](https://jcp.org/en/jsr/detail?id=305) was never properly released, so Kotlin uses the IntelliJ specific ``org.jetbrains.annotations.NotNull`` class, which feels kind of murky but cannot be changed. The retention-policy is CLASS only, so the annotation cannot be read using reflection and thus the org.jetbrains [annotations.jar](https://search.maven.org/search?q=g:org.jetbrains%20AND%20a:annotations&core=gav) is not necessarily required at runtime.
+
 
 ## Declarations
 
 ### Object
+
 <table>
 <tr><td>Kotlin</td><td>Java</td></tr>
 <tr><td>
@@ -47,18 +53,18 @@ internal object A {
 </td><td>
 
 ```java
-@Metadata(mv = {1, 1, 15}, bv = {1, 0, 3}, k = 1, d1 = {"...."}, d2 = {"Lpurej/kotlin/A;", "", "()V", "kotlin-v1"})
 public final class A {
-  private A() {
-  }
   public static final A INSTANCE;
   static {
     A a = new A();
     INSTANCE = a;
   }
+  private A() {
+  }
 }
 ```
 </td></tr>
+
 <tr><td>
 
 ```kotlin
@@ -69,16 +75,47 @@ private object A {
 
 ```java
 final class A {
-  private A() {
-  }
   public static final A INSTANCE;
   static {
     A a = new A();
     INSTANCE = a;
   }
+  private A() {
+  }
 }
 ```
 </td></tr>
+
+<tr><td>
+
+```kotlin
+object A {
+  const val S1 = "s1"
+  internal const val S2 = "s2"
+  private const val S3 = "s3"
+}
+```
+
+</td><td>
+
+```java
+public final class A {
+  @NotNull
+  public static final String S1 = "s1";
+  @NotNull
+  public static final String S2 = "s2";
+  private static final String S3 = "s3";
+  public static final A INSTANCE;
+  static {
+    A a = new A();
+    INSTANCE = a;
+  }
+  private A() {
+  }
+}
+```
+</td></tr>
+
 </table>
 
 
