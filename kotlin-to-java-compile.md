@@ -1,4 +1,4 @@
-# Kotline to Java-Compiled (class files)
+# Kotline to Java-Compile Results (class files)
 Describes some common Kotlin declarations and the resulting compiled Java code result (*.class). The result has been decompiled to show whats going on. This has been tested with IntelliJ 2019.2, OpenJdk 11 and the decompiler JD and procyon.
 
 ## Kotlin Metadata
@@ -36,8 +36,12 @@ public final class A {
 ## Kotlin @NotNull
 The Kotlin compiler might also add a ``@NotNull`` annotation to fields or methods which should never contain/return null values. Unfortunately the [JSR-305](https://jcp.org/en/jsr/detail?id=305) was never properly released, so Kotlin uses the IntelliJ specific ``org.jetbrains.annotations.NotNull`` class, which feels kind of murky but cannot be changed. The retention-policy is CLASS only, so the annotation cannot be read using reflection and thus the org.jetbrains [annotations.jar](https://search.maven.org/search?q=g:org.jetbrains%20AND%20a:annotations&core=gav) is not necessarily required at runtime.
 
+## Other Kotlin internal classes
+The Intrinsics class [kotlin.jvm.internal.Intrinsics](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/jvm/runtime/kotlin/jvm/internal/Intrinsics.java) contains the some sanity check logic used for example for not-null properties (without ?) and other constraint-checks.
 
-## Declarations
+Those classes are required at runtime.  
+
+## Compiles-To Results
 
 ### Object
 
