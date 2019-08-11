@@ -12,6 +12,7 @@ Example:
 
 ```kotlin
 package org.myorg.mypackage
+
 class A {
 }
 ```
@@ -20,10 +21,12 @@ class A {
 
 ```java
 package org.myorg.mypackage;
+
 @Metadata(mv = {1, 1, 15}, bv = {1, 0, 3}, k = 1,
   d1 = {"\000\f\n\002\030\002\n\002\020\000\n\002\b\002\030\0002\0020\001B\005�\006\002\020\002�\006\003"},
   d2 = {"Lorg/myorg/mypackage/A;", "", "()V", "myproject-name"})
-public final class A {}
+public final class A {
+}
 ```
 
 </td></tr>
@@ -169,7 +172,7 @@ public abstract class A {
 </table>
 
 
-### const
+### const val
 
 <table>
 <tr><td>Kotlin</td><td>Java</td></tr>
@@ -241,6 +244,112 @@ public final class A {
 
 </table>
 
+
+
+### val
+
+<table>
+<tr><td>Kotlin</td><td>Java</td></tr>
+
+<tr><td>
+
+```kotlin
+object A {
+  val S1 = "s1"
+  internal val S2 = "s2"
+  private val S3 = "s3"
+
+  @JvmField
+  val S4 = "s4"
+  @JvmField
+  internal val S5 = "s5"
+}
+```
+
+</td><td>
+
+```java
+@Metadata(...)
+public final class A {
+  @NotNull
+  private static final String S1 = "s1";
+  @NotNull
+  private static final String S2 = "s2";
+  private static final String S3 = "s3";
+  @JvmField
+  @NotNull
+  public static final String S4 = "s4";
+  @JvmField
+  @NotNull
+  public static final String S5 = "s5";
+
+  public static final A INSTANCE;
+
+  @NotNull
+  public final String getS1() {
+    return S1;
+  }
+
+  @NotNull
+  public final String getS2$kotlin_v1() {
+    return S2;
+  }
+
+  static {
+    A a = new A();
+    INSTANCE = a;
+  }
+  private A() {
+  }
+}
+```
+</td></tr>
+
+<tr><td>
+
+```kotlin
+class A {
+ val S1 = "s1"
+ internal val S2 = "s2"
+ private val S3 = "s3"
+ @JvmField
+ val S4 = "s4"
+ @JvmField
+ internal val S5 = "s5"
+}
+```
+
+</td><td>
+
+```java
+@Metadata(...)
+public final class A {
+  @NotNull
+  private final String S1 = "s1";
+  @NotNull
+  private final String S2 = "s2";
+  private final String S3 = "s3";
+  @JvmField
+  @NotNull
+  public final String S4 = "s4";
+  @JvmField
+  @NotNull
+  private final String S5 = "s5";
+
+  @NotNull
+  public final String getS1() {
+    return this.S1;
+  }
+
+  @NotNull
+  public final String getS2$kotlin_v1() {
+    return this.S2;
+  }
+}
+```
+</td></tr>
+
+</table>
 
 
 ### .tmpl
