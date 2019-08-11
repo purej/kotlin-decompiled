@@ -141,6 +141,7 @@ public final class A {
 }
 ```
 </td></tr>
+
 <tr><td>
 
 ```kotlin
@@ -151,6 +152,39 @@ private class A {
 
 ```java
 final class A {
+  public A() {
+  }
+}
+```
+</td></tr>
+
+<tr><td>
+
+```kotlin
+open class A {
+}
+```
+</td><td>
+
+```java
+public class A {
+  public A() {
+  }
+}
+```
+</td></tr>
+
+
+<tr><td>
+
+```kotlin
+abstract class A {
+}
+```
+</td><td>
+
+```java
+public abstract class A {
   public A() {
   }
 }
