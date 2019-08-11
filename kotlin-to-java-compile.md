@@ -370,6 +370,7 @@ class B {
 </td><td>
 
 ```java
+@Metadata(...)
 public final class A {
   @NotNull
   private String s1;
