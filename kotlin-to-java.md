@@ -29,7 +29,6 @@ public final class A {}
 </td></tr>
 </table>
 
-In the examples below, the auto-generated @Metadata annotation is not listed anymore to increase readability.
 
 ## Kotlin @NotNull
 The Kotlin compiler might also add a ``@NotNull`` annotation to fields or methods which should never contain/return null values. Unfortunately the [JSR-305](https://jcp.org/en/jsr/detail?id=305) was never properly released, so Kotlin uses the IntelliJ specific ``org.jetbrains.annotations.NotNull`` class, which feels kind of murky but cannot be changed. The retention-policy is CLASS only, so the annotation cannot be read using reflection and thus the org.jetbrains [annotations.jar](https://search.maven.org/search?q=g:org.jetbrains%20AND%20a:annotations&core=gav) is not necessarily required at runtime.
@@ -53,6 +52,7 @@ internal object A {
 </td><td>
 
 ```java
+@Metadata(...)
 public final class A {
   public static final A INSTANCE;
   static {
@@ -74,37 +74,8 @@ private object A {
 </td><td>
 
 ```java
+@Metadata(...)
 final class A {
-  public static final A INSTANCE;
-  static {
-    A a = new A();
-    INSTANCE = a;
-  }
-  private A() {
-  }
-}
-```
-</td></tr>
-
-<tr><td>
-
-```kotlin
-object A {
-  const val S1 = "s1"
-  internal const val S2 = "s2"
-  private const val S3 = "s3"
-}
-```
-
-</td><td>
-
-```java
-public final class A {
-  @NotNull
-  public static final String S1 = "s1";
-  @NotNull
-  public static final String S2 = "s2";
-  private static final String S3 = "s3";
   public static final A INSTANCE;
   static {
     A a = new A();
@@ -135,6 +106,7 @@ internal class A {
 </td><td>
 
 ```java
+@Metadata(...)
 public final class A {
   public A() {
   }
@@ -151,6 +123,7 @@ private class A {
 </td><td>
 
 ```java
+@Metadata(...)
 final class A {
   public A() {
   }
@@ -167,6 +140,7 @@ open class A {
 </td><td>
 
 ```java
+@Metadata(...)
 public class A {
   public A() {
   }
@@ -184,6 +158,7 @@ abstract class A {
 </td><td>
 
 ```java
+@Metadata(...)
 public abstract class A {
   public A() {
   }
@@ -194,10 +169,85 @@ public abstract class A {
 </table>
 
 
+### const
+
+<table>
+<tr><td>Kotlin</td><td>Java</td></tr>
+
+<tr><td>
+
+```kotlin
+object A {
+  const val S1 = "s1"
+  internal const val S2 = "s2"
+  private const val S3 = "s3"
+}
+```
+
+</td><td>
+
+```java
+@Metadata(...)
+public final class A {
+  @NotNull
+  public static final String S1 = "s1";
+  @NotNull
+  public static final String S2 = "s2";
+  private static final String S3 = "s3";
+  public static final A INSTANCE;
+  static {
+    A a = new A();
+    INSTANCE = a;
+  }
+  private A() {
+  }
+}
+```
+</td></tr>
+
+<tr><td>
+
+```kotlin
+class A {
+ companion object {
+   const val S1 = "s1"
+   internal const val S2 = "s2"
+   private const val S3 = "s3"
+ }
+}
+```
+
+</td><td>
+
+```java
+@Metadata(...)
+public final class A {
+  @NotNull
+  public static final String S1 = "s1";
+  @NotNull
+  public static final String S2 = "s2";
+  private static final String S3 = "s3";
+  public static final Companion Companion;
+  static {
+    Companion = new Companion(null);
+  }
+  @Metadata(...)
+  public static final class Companion {
+    private Companion() {}
+  }
+}
+```
+</td></tr>
+
+</table>
+
+
+
 ### .tmpl
 
 <table>
 <tr><td>Kotlin</td><td>Java</td></tr>
+
 <tr><td>
 
 ```kotlin
