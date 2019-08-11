@@ -361,7 +361,7 @@ public final class A {
 
 ```kotlin
 class B {
-  var S1 : String =  "s1"
+  var S1 : String = "s1"
   var S2 : String? = null
   lateinit var S3 : String
 }
