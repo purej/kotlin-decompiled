@@ -352,6 +352,76 @@ public final class A {
 </table>
 
 
+### var
+
+<table>
+<tr><td>Kotlin</td><td>Java</td></tr>
+
+<tr><td>
+
+```kotlin
+class B {
+  var S1 : String =  "s1"
+  var S2 : String? = null
+  lateinit var S3 : String
+}
+```
+
+</td><td>
+
+```java
+public final class A {
+  @NotNull
+  private String s1;
+  @Nullable
+  private String s2;
+  @NotNull
+  public String s3;
+
+  public A() {
+    this.s1 = "s1";
+  }
+
+  @NotNull
+  public final String getS1() {
+    return this.s1;
+  }
+
+  public final void setS1(@NotNull final String <set-?>) {
+    Intrinsics.checkParameterIsNotNull((Object)<set-?>, "<set-?>");
+    this.s1 = <set-?>;
+  }
+
+  @Nullable
+  public final String getS2() {
+    return this.s2;
+  }
+
+  public final void setS2(@Nullable final String <set-?>) {
+    this.s2 = <set-?>;
+  }
+
+  @NotNull
+  public final String getS3() {
+    final String s3 = this.S3;
+    if (s3 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("S3");
+    }
+    return s3;
+  }
+
+  public final void setS3(@NotNull final String <set-?>) {
+    Intrinsics.checkParameterIsNotNull((Object)<set-?>, "<set-?>");
+    this.s3 = <set-?>;
+  }
+}
+```
+
+</td></tr>
+</table>
+
+
+
 ### .tmpl
 
 <table>
