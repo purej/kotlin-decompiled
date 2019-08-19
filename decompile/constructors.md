@@ -126,7 +126,10 @@ public final class A {
 <tr><td>
 
 ```kotlin
-class A(val a: String = "x", val b: String = "y", val c: String = "z") {
+class A(
+   val a: String = "x",
+   val b: String = "y",
+   val c: String = "z") {
 }
 ```
 
