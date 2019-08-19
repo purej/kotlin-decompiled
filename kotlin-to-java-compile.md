@@ -48,3 +48,4 @@ Those classes are required at runtime.
 
 2.) [Member Variables](decompile/member-variables.md)
 
+3.) [Constructors](decompile/constructors.md)
