@@ -30,11 +30,14 @@ public final class A {
   @NotNull
   public static final String S2 = "s2";
   private static final String S3 = "s3";
+
   public static final A INSTANCE;
+
   static {
     A a = new A();
     INSTANCE = a;
   }
+
   private A() {
   }
 }
@@ -63,10 +66,13 @@ public final class A {
   @NotNull
   public static final String S2 = "s2";
   private static final String S3 = "s3";
+
   public static final Companion Companion;
+
   static {
     Companion = new Companion(null);
   }
+
   @Metadata(...)
   public static final class Companion {
     private Companion() {}
@@ -118,6 +124,14 @@ public final class A {
 
   public static final A INSTANCE;
 
+  static {
+    A a = new A();
+    INSTANCE = a;
+  }
+
+  private A() {
+  }
+
   @NotNull
   public final String getS1() {
     return S1;
@@ -126,13 +140,6 @@ public final class A {
   @NotNull
   public final String getS2$kotlin_v1() {
     return S2;
-  }
-
-  static {
-    A a = new A();
-    INSTANCE = a;
-  }
-  private A() {
   }
 }
 ```
@@ -222,6 +229,7 @@ public final class A {
   @JvmField
   @NotNull
   public static String S5;
+
   public static final A INSTANCE;
 
   static {
