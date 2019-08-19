@@ -127,9 +127,24 @@ public final class A {
 
 ```kotlin
 class A(
-   val a: String = "x",
-   val b: String = "y",
-   val c: String = "z") {
+  val a: String = "x",
+  val b: String = "y",
+  val c: String = "z") {
+}
+class A(
+  a: String = "x",
+  b: String = "y",
+  c: String = "z") {
+
+  val a: String
+  val b: String
+  val c: String
+
+  init {
+    this.a = a;
+    this.b = b;
+    this.c = c;
+  }
 }
 ```
 
