@@ -19,16 +19,47 @@ object A() {
 }
 object A constructor() {
 }
+object A open constructor() {
+}
+object A internal constructor() {
+}
 ```
 
 </td><td>
 
 ```java
-@Metadata(...)
 public final class A {
+  public A() {
+  }
 }
 ```
 </td></tr>
+
+
+<tr><td>
+
+```kotlin
+object A protected constructor() {
+}
+object B private constructor() {
+}
+- Note: package-visibility not supported by Kotlin!
+```
+
+</td><td>
+
+```java
+public final class A {
+  protected A() {
+  }
+}
+public final class B {
+  private B() {
+  }
+}
+```
+</td></tr>
+
 
 
 <tr><td>
