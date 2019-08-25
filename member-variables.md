@@ -210,6 +210,8 @@ object A {
   var S4 = "s4"
   @JvmField
   internal var S5 = "s5"
+  lateinit var S6: String
+  var S7: String? = null
 }
 ```
 
@@ -229,6 +231,10 @@ public final class A {
   @JvmField
   @NotNull
   public static String S5;
+  @NotNull
+  public static String S6;
+  @Nullable
+  private static String S7;
 
   public static final A INSTANCE;
 
@@ -262,6 +268,29 @@ public final class A {
   public final void setS2$kotlin_v1(@NotNull final String <set-?>) {
     Intrinsics.checkParameterIsNotNull((Object)<set-?>, "<set-?>");
     A.S2 = <set-?>;
+  }
+
+  @NotNull
+  public final String getS6() {
+    final String s6 = A.S6;
+    if (s6 == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("S6");
+    }
+    return s6;
+  }
+
+  public final void setS6(@NotNull final String <set-?>) {
+    Intrinsics.checkParameterIsNotNull((Object)<set-?>, "<set-?>");
+    A.S6 = <set-?>;
+  }
+
+  @Nullable
+  public final String getS7() {
+    return A.S7;
+  }
+
+  public final void setS7(@Nullable final String <set-?>) {
+    A.S7 = <set-?>;
   }
 }
 ```
