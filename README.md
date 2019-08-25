@@ -1,11 +1,11 @@
 # Kotline to Java / Decompile Results
 Describes some Kotlin declarations and the resulting compiled Java code result (*.class). The result has been decompiled to show whats going on. This has been tested with IntelliJ 2019.2, OpenJdk 11 and the decompilers JD, procyon and CFR (some do no understand all kotlin-compiled constructs, see [Java Decompilers](http://www.javadecompilers.com/)).
 
-1.) [Object / Class](object-class.md)
+1.) [Object / Class](01-object-class.md)
 
-2.) [Member Variables](member-variables.md)
+2.) [Member Variables](02-member-variables.md)
 
-3.) [Constructors](constructors.md)
+3.) [Constructors](03-constructors.md)
 
 ## Kotlin Metadata
 The Kotlin compiler adds a ``@Metadata`` annotation to every class file. This annotation contains alot of additional information, see [Metadata.kt](https://github.com/JetBrains/kotlin/blob/master/libraries/stdlib/jvm/runtime/kotlin/Metadata.kt). This is the reason, why Kotlin compiled class files are about 30% bigger in size then plain Java compiled classes.
