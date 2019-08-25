@@ -149,13 +149,13 @@ public final class A {
 
 ```kotlin
 class A {
- val S1 = "s1"
- internal val S2 = "s2"
- private val S3 = "s3"
- @JvmField
- val S4 = "s4"
- @JvmField
- internal val S5 = "s5"
+  val S1 = "s1"
+  internal val S2 = "s2"
+  private val S3 = "s3"
+  @JvmField
+  val S4 = "s4"
+  @JvmField
+  internal val S5 = "s5"
 }
 ```
 
@@ -308,6 +308,7 @@ class A {
   var s4 = "s4"
   @JvmField
   internal var s5 = "s5"
+  lateinit var s6: String
 }
 ```
 
@@ -326,6 +327,8 @@ public final class A {
   @JvmField
   @NotNull
   public String s5;
+  @NotNull
+  public String s6;
 
   public A() {
     this.s1 = "s1";
@@ -353,6 +356,20 @@ public final class A {
   public final void setS2$kotlin_v1(@NotNull final String <set-?>) {
     Intrinsics.checkParameterIsNotNull((Object)<set-?>, "<set-?>");
     this.s2 = <set-?>;
+  }
+
+  @NotNull
+  public final String getS6() {
+    final String s6 = this.s6;
+    if (s6 == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("s6");
+    }
+    return s6;
+  }
+
+  public final void setS6(@NotNull final String <set-?>) {
+    Intrinsics.checkParameterIsNotNull((Object)<set-?>, "<set-?>");
+    this.s6 = <set-?>;
   }
 }
 ```
