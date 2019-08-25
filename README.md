@@ -1,4 +1,4 @@
-# Kotline to Java-Compile Results (class files)
+# Kotline to Java / Decompile Results
 Describes some Kotlin declarations and the resulting compiled Java code result (*.class). The result has been decompiled to show whats going on. This has been tested with IntelliJ 2019.2, OpenJdk 11 and the decompilers JD, procyon and CFR (some do no understand all kotlin-compiled constructs, see [Java Decompilers](http://www.javadecompilers.com/)).
 
 1.) [Object / Class](decompile/object-class.md)
